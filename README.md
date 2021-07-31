@@ -45,6 +45,23 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
 - **[OP.GG](https://op.gg)**
 
+## Multi Guards Authentification
+- Admin
+- User
+- Manager
+
+## Run the Application 
+- **  php artisan migrate:fresh --seed
+
+- **  http://auth-app.test/Admin/register
+- **  http://auth-app.test/Admin/login
+
+- **  http://auth-app.test/Manager/register
+_ **  http://auth-app.test/Manager/login
+
+- **  http://auth-app.test/user/register
+- **  http://auth-app.test/user/login
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
