@@ -12,7 +12,7 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \Closure  $next
      * @param  string|null  ...$guards
      * @return mixed
@@ -23,10 +23,16 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                //return redirect(RouteServiceProvider::HOME);
+                if ( $guard === 'admin'){
+                    return redirect()->route('admin.home');
+                }
+                if ($guard === 'manager'){
+                    return redirect()->route('manager.home');
+                }
+                return redirect()->route('user.home');
             }
         }
-
         return $next($request);
     }
 }
