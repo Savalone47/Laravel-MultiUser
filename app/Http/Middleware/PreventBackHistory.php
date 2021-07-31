@@ -10,12 +10,15 @@ class PreventBackHistory
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $response = $next($request);
+        return  $response->header('Cache-Control', 'nocache,no-store,max-age=0;must-revalidate')
+                        ->header('Pragma','no-cache')
+                        ->header('Expires', 'Sun, 20 Jan 2020 00:00:00 GMT');
     }
 }
