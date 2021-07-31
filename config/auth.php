@@ -18,6 +18,16 @@ return [
         'passwords' => 'users',
     ],
 
+    // access to models
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class,
+    ],
+    'manager' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Manager::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -46,6 +56,17 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        // add the privilege
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'manager' => [
+            'driver' => 'session',
+            'provider' => 'managers',
+        ],
+
     ],
 
     /*
@@ -75,6 +96,14 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'admins' =>[
+          'driver' => 'eloquent',
+            'model' => App\Models\Admin::class
+        ],
+        'managers' =>[
+            'driver' => 'eloquent',
+            'model' => App\Models\Manager::class
+        ],
     ],
 
     /*
@@ -99,6 +128,16 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // add privilege models
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' =>App\Models\Admin::class,
+        ],
+        'managers' => [
+            'driver' => 'eloquent',
+            'model' =>App\Models\Manager::class,
+        ],
     ],
 
     /*
@@ -113,5 +152,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];
